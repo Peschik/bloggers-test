@@ -1,22 +1,21 @@
-import React, {FC, MouseEventHandler} from 'react';
+import React, {FC} from 'react';
 import { IBlogger } from '../types/types';
 import './bloggerCard.scss'
 
 interface BloggerCardProps {
     blogger: IBlogger;
-    activeBlogger: number;
-    onActivateBlogger: (id: number) => void
+    activeId: number;
+    // onActivateBlogger: (id: number) => void
 }
 
 
 
-const BloggerCard: FC<BloggerCardProps> = ({blogger, activeBlogger, onActivateBlogger}) => {
-
-    const clickHandler = (id: number) => {
-        onActivateBlogger(id)
-    }
+const BloggerCard: FC<BloggerCardProps> = ({blogger, activeId}) => {
+    // const clickHandler = (id: number) => {
+    //     onActivateBlogger(id)
+    // }
     return (
-        <div onClick={() => clickHandler(blogger.id)} className={blogger.id === activeBlogger ? 'blogger__card active' : 'blogger__card'}
+        <div  className={blogger.id === activeId? 'blogger__card active' : 'blogger__card'}
             >
             <img src={`https://i.pravatar.cc/300?img=${blogger.id}`} alt={blogger.name}/>
             <p>{blogger.name}</p>
