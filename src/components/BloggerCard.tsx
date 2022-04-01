@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { IBlogger } from '../types/types';
-import './bloggerCard.scss'
+import './bloggerCard.scss';
 
 interface BloggerCardProps {
     blogger: IBlogger;

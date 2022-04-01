@@ -56,7 +56,20 @@ const App: FC = () => {
     .filter((item, index) => index < 3);
 
   return (
+    <div className="background">
       <div className="container">
+        
+          <img
+            className="background__image"
+            src={backgroundImage}
+            alt="background"
+            />
+            <img
+            className="background__image__lower"
+            src={backgroundImage}
+            alt="background"
+            />
+        
         <h2 className="heading">Наши топ-блогеры</h2>
         <p className="specialists">
           Лучше специалисты в своем деле, <br />
@@ -75,17 +88,6 @@ const App: FC = () => {
             blogger={bloggers[activeId]} 
           />
         </ErrorBoundary>
-        <div className="background">
-          <img
-          className="background__image"
-          src={backgroundImage}
-          alt="background"
-          />
-          <img
-          className="background__image__lower"
-          src={backgroundImage}
-          alt="background"
-          />
         </div>
       </div>
   );

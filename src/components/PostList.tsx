@@ -13,8 +13,8 @@ const PostList:FC<PostListProps> = ({posts, blogger}) => {
     const elements = posts.map(item => {
         return (
                 <>
-                <h3>{item.title.charAt(0).toUpperCase() + item.title.slice(1)}</h3>
-                <span>{item.body.charAt(0).toUpperCase() + item.body.slice(1)}</span>
+                    <h3>{item.title.charAt(0).toUpperCase() + item.title.slice(1)}</h3>
+                    <span>{item.body.charAt(0).toUpperCase() + item.body.slice(1)}</span>
                 </>
         )
     })
@@ -22,7 +22,7 @@ const PostList:FC<PostListProps> = ({posts, blogger}) => {
         <>  
             
             <Container>
-                <Row className='align-items-lg-start mt-4'>
+                <Row className='posts__header'>
                     <Col className='image-quote' lg={3}>
                         <img src={quote} alt="qoute" />
                     </Col>
@@ -31,10 +31,9 @@ const PostList:FC<PostListProps> = ({posts, blogger}) => {
                     </Col>
                 </Row>
                 
-                <Row className='mt-4'>
-                    <Col lg={3} />
-                    <Col className='col align-items-end' lg={9}>
-                    {elements}
+                <Row className='posts'>
+                    <Col className='posts__content' lg={9}>
+                        {elements}
                     </Col>
                 </Row>
             </Container>   

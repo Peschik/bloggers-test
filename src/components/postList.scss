@@ -1,1 +1,30 @@
+@import '../variables.scss';
+.posts {
+    display: flex;
+    justify-content: flex-end;
+    color: $main-color;
+    span {
+        margin-bottom: 19px;
+        
+    }
+    h3{
+        font-size: 24px;
+        font-weight: 500;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+    &__header {
+        display: flex;
+        align-items: start;
+        margin-top: 40px;
+        margin-bottom: 27px;
+    }
+    
+}
+.image-quote{
+    display: flex;
+    justify-content: flex-end;
+}
 
