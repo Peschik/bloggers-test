@@ -1,34 +1,107 @@
 .blogger__card {
-    p{
-        text-align: left;
-        margin-top: 19px;
-    }
+  p {
+    text-align: left;
+    margin-top: 19px;
+  }
 }
-.slider__button__next{
-    order: 1;
-    background-image: url('../../img/Next.svg');
-    width: 48px;
-    height: 48px;
-    align-self:flex-start;
-    justify-self: flex-start;
+.slider__button__next {
+  order: 1;
+  background-image: url("../../img/Next.svg");
+  width: 48px;
+  height: 48px;
+  align-self: flex-start;
+  justify-self: flex-start;
+  transition: all ease-in-out 1s;
+  &:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 }
 
 .slider__button__prev {
-    background-image: url('../../img/Prev.svg');
-    width: 48px;
-    height: 48px;
+  background-image: url("../../img/Prev.svg");
+  width: 48px;
+  height: 48px;
+  transition: linear 0.4s;
+  transition: all ease-in-out 1s;
+  &:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 }
-.slick-slide{
-    text-align: center
+.slick-slide {
+  text-align: center;
 }
-.slick-slider{
-    display: flex;
-    flex-wrap: wrap;
-    align-items:center;
-    justify-content: center;
-    gap: 20px
+.slick-slider {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
-.slick-list{
-    width:100%;
-    order:2
+.slick-list {
+  width: 100%;
+  order: 2;
+}
+
+@media only screen and (max-width: 567px) {
+  .slider__button__next {
+    order: 4;
+    width: 35px;
+    height: 35px;
+    background-size: contain;
+  }
+  .slider__button__prev {
+    width: 35px;
+    height: 35px;
+    background-size: contain;
+    order: 3;
+  }
+
+  .blogger__card {
+    p {
+      text-align: center;
+    }
+    text-align: -webkit-center;
+  }
+  .slick-slide {
+    p {
+      font-size: 14px;
+      margin: 0;
+    }
+    text-align: left;
+    width: 100px;
+  }
+}
+@media only screen and (device-width: 768px) {
+  .slider__button__next {
+    order: 4;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+  }
+  .slider__button__prev {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    order: 3;
+  }
+  .blogger__card {
+    box-sizing: inherit;
+    max-width: 170px;
+    padding: 0 -10px;
+    img {
+      box-sizing: inherit;
+      max-width: 170px;
+      width: 100%;
+    }
+    p {
+      margin-bottom: 8px;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+  .slider__item {
+    margin: 0 10px;
+  }
 }

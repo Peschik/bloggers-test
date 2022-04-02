@@ -4,7 +4,7 @@ import PostList from "./components/PostList";
 import { FC, useEffect, useState } from "react";
 import axios from "axios";
 import { IBlogger, IPost } from "./types/types";
-import {BloggerSlider} from './components/bloggerSlider/BloggerSlider'
+import { BloggerSlider } from "./components/bloggerSlider/BloggerSlider";
 import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
 
 const App: FC = () => {
@@ -15,7 +15,6 @@ const App: FC = () => {
     fetchBloggers();
     fetchPosts();
   }, []);
-
 
   async function fetchBloggers() {
     try {
@@ -39,17 +38,8 @@ const App: FC = () => {
   }
 
   const onActivateBlogger = (id: number) => {
-    setActiveId(id)
+    setActiveId(id);
   };
-
-  const onChangeSlide = (changeSlide: number) => {
-    if(changeSlide === 1 && activeId < 10) {
-      setActiveId(activeId + changeSlide)
-    };
-    if(changeSlide === -1 && activeId > 0) {
-      setActiveId(activeId + changeSlide)
-    };
-  }
 
   const activePosts = posts
     .filter((item) => item.userId === activeId + 1)
@@ -58,38 +48,34 @@ const App: FC = () => {
   return (
     <div className="background">
       <div className="container">
-        
-          <img
-            className="background__image"
-            src={backgroundImage}
-            alt="background"
-            />
-            <img
-            className="background__image__lower"
-            src={backgroundImage}
-            alt="background"
-            />
-        
+        <img
+          className="background__image"
+          src={backgroundImage}
+          alt="background"
+        />
+        <img
+          className="background__image__lower"
+          src={backgroundImage}
+          alt="background"
+        />
+
         <h2 className="heading">Наши топ-блогеры</h2>
         <p className="specialists">
           Лучше специалисты в своем деле, <br />
           средний опыт работы в профессии - 27 лет
         </p>
         <ErrorBoundary>
-            <BloggerSlider 
+          <BloggerSlider
             bloggers={bloggers}
             activeId={activeId}
             onActivateBlogger={onActivateBlogger}
-            onChangeSlide={onChangeSlide} />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <PostList 
-            posts={activePosts} 
-            blogger={bloggers[activeId]} 
           />
         </ErrorBoundary>
-        </div>
+        <ErrorBoundary>
+          <PostList posts={activePosts} blogger={bloggers[activeId]} />
+        </ErrorBoundary>
       </div>
+    </div>
   );
 };
 

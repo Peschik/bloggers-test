@@ -1,30 +1,54 @@
-@import '../variables.scss';
+@import "../variables.scss";
+
 .posts {
+  display: flex;
+  justify-content: flex-end;
+  color: $main-color;
+  span {
+    margin-bottom: 19px;
+  }
+  h3 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  &__content {
     display: flex;
-    justify-content: flex-end;
-    color: $main-color;
-    span {
-        margin-bottom: 19px;
-        
-    }
-    h3{
-        font-size: 24px;
-        font-weight: 500;
-    }
-    &__content {
-        display: flex;
-        flex-direction: column;
-    }
-    &__header {
-        display: flex;
-        align-items: start;
-        margin-top: 40px;
-        margin-bottom: 27px;
-    }
-    
+    flex-direction: column;
+  }
+  &__header {
+    display: flex;
+    align-items: start;
+    margin-top: 40px;
+    margin-bottom: 27px;
+  }
+  li {
+    list-style: none;
+  }
 }
-.image-quote{
-    display: flex;
-    justify-content: flex-end;
+.image-quote {
+  display: flex;
+  justify-content: flex-end;
 }
 
+@media only screen and (max-width: 768px) {
+  .posts {
+    box-sizing: border-box;
+  }
+}
+@media only screen and (max-width: 567px) {
+  .container h2 {
+    margin: 0 auto;
+    font-size: 24px;
+    text-align: center;
+  }
+  .image-quote {
+    display: flex;
+    justify-content: flex-start;
+    img {
+      width: 50px;
+    }
+  }
+  li {
+    margin-top: 15px;
+  }
+}
