@@ -6,7 +6,7 @@ import "./bloggerSlider.scss";
 
 interface SliderProps {
   bloggers: IBlogger[];
-  activeId: number;
+  indexActiveSlide: number;
   onActivateBlogger: (id: number) => void;
 }
 
@@ -20,14 +20,6 @@ export const BloggerSlider: FC<SliderProps> = ({
   useEffect(() => {
     onActivateBlogger(slideIndex);
   }, [slideIndex]);
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      if (sliderRef.current.state.breakpoint === 576) {
-        sliderRef.current.slickGoTo(-1);
-      }
-    }
-  }, [bloggers]);
 
   function SampleNextArrow(props) {
     const { onClick } = props;
@@ -65,7 +57,7 @@ export const BloggerSlider: FC<SliderProps> = ({
           {bloggers.map((item: IBlogger, index: number) => {
             return (
               <div className="slider__item" key={index}>
-                <BloggerCard activeId={slideIndex + 1} blogger={item} />
+                <BloggerCard indexActiveSlide={slideIndex + 1} blogger={item} />
               </div>
             );
           })}

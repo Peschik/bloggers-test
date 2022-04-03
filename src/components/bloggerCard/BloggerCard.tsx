@@ -4,14 +4,16 @@ import "./bloggerCard.scss";
 
 interface BloggerCardProps {
   blogger: IBlogger;
-  activeId: number;
+  indexActiveSlide: number;
 }
 
-const BloggerCard: FC<BloggerCardProps> = ({ blogger, activeId }) => {
+const BloggerCard: FC<BloggerCardProps> = ({ blogger, indexActiveSlide }) => {
   return (
     <div
       className={
-        blogger.id === activeId ? "blogger__card active" : "blogger__card"
+        blogger.id === indexActiveSlide
+          ? "blogger__card active"
+          : "blogger__card"
       }
     >
       <img

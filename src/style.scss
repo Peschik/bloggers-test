@@ -11,28 +11,8 @@ body {
   max-width: 1280px;
   margin: auto;
   position: relative;
-  h2 {
-    margin-top: 64px;
-    margin-bottom: 47px;
-    font-size: 48px;
-    line-height: 48px;
-    font-weight: 600;
-    color: $main-color;
-    &.heading {
-      text-align: center;
-    }
-  }
-  p {
-    margin-bottom: 31px;
-    font-size: 18px;
-    text-align: center;
-    font-weight: 300;
-    color: $main-color;
-  }
 }
-.posts {
-  margin-bottom: 100px;
-}
+
 .background__image {
   position: absolute;
   right: -50px;

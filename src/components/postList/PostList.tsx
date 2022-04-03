@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "./postList.scss";
-import { IPost, IBlogger } from "../types/types";
-import { quote } from "../components/index";
+import { IPost, IBlogger } from "../../types/types";
+import { quote } from "../index";
 import { Container, Row, Col } from "react-bootstrap";
 interface PostListProps {
   posts: IPost[];

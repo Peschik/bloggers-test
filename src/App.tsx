@@ -1,16 +1,23 @@
 import "./style.scss";
-import { backgroundImage } from "./components";
-import PostList from "./components/PostList";
-import { FC, useEffect, useState } from "react";
-import axios from "axios";
-import { IBlogger, IPost } from "./types/types";
-import { BloggerSlider } from "./components/bloggerSlider/BloggerSlider";
+
 import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
+import AppHeader from "./components/appHeader/AppHeader";
+import { BloggerSlider } from "./components/bloggerSlider/BloggerSlider";
+import PostList from "./components/postList/PostList";
+import axios from "axios";
+import { FC, useEffect, useState } from "react";
+import { IBlogger, IPost } from "./types/types";
+import { backgroundImage } from "./components";
+import Spinner from "./components/spinner/Spinner";
+import ErrorMessage from "./components/error/Error";
 
 const App: FC = () => {
   const [bloggers, setBloggers] = useState<IBlogger[]>([]);
   const [posts, setPosts] = useState<IPost[]>([]);
-  const [activeId, setActiveId] = useState<number>(1);
+  const [indexActiveSlide, setIndexActiveSlide] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error>(null);
+
   useEffect(() => {
     fetchBloggers();
     fetchPosts();
@@ -18,12 +25,15 @@ const App: FC = () => {
 
   async function fetchBloggers() {
     try {
+      setLoading(true);
       const response = await axios.get<IBlogger[]>(
         "https://jsonplaceholder.typicode.com/users"
       );
       setBloggers(response.data);
+      setLoading(false);
     } catch (e) {
-      throw e;
+      setLoading(false);
+      setError(e.message);
     }
   }
   async function fetchPosts() {
@@ -38,29 +48,33 @@ const App: FC = () => {
   }
 
   const onActivateBlogger = (id: number): void => {
-    setActiveId(id);
+    setIndexActiveSlide(id);
   };
 
   const activePosts: IPost[] = posts
-    .filter((item) => item.userId === activeId + 1)
+    .filter((item) => item.userId === indexActiveSlide + 1)
     .filter((item, index) => index < 3);
 
+  const errorMessage = error ? <ErrorMessage /> : "";
+  const spinner = loading ? <Spinner /> : "";
   return (
     <div className="container">
-      <h2 className="heading">Наши топ-блогеры</h2>
-      <p className="specialists">
-        Лучше специалисты в своем деле, <br />
-        средний опыт работы в профессии - 27 лет
-      </p>
+      <AppHeader />
       <ErrorBoundary>
-        <BloggerSlider
-          bloggers={bloggers}
-          activeId={activeId}
-          onActivateBlogger={onActivateBlogger}
-        />
+        {errorMessage}
+        {spinner}
+        {!error && !loading ? (
+          <BloggerSlider
+            bloggers={bloggers}
+            indexActiveSlide={indexActiveSlide}
+            onActivateBlogger={onActivateBlogger}
+          />
+        ) : (
+          ""
+        )}
       </ErrorBoundary>
       <ErrorBoundary>
-        <PostList posts={activePosts} blogger={bloggers[activeId]} />
+        <PostList posts={activePosts} blogger={bloggers[indexActiveSlide]} />
       </ErrorBoundary>
       <img
         className="background__image"
