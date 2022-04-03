@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useRef } from "react";
+import { FC, useState, useEffect } from "react";
 import { IBlogger } from "../../types/types";
 import Slider from "react-slick";
 import BloggerCard from "../bloggerCard/BloggerCard";
@@ -15,7 +15,6 @@ export const BloggerSlider: FC<SliderProps> = ({
   onActivateBlogger,
 }) => {
   const [slideIndex, setSlideIndex] = useState(0);
-  const sliderRef = useRef<any>();
 
   useEffect(() => {
     onActivateBlogger(slideIndex);
@@ -53,7 +52,7 @@ export const BloggerSlider: FC<SliderProps> = ({
   return (
     <div className="slider__wrapper">
       <div className="slider__inner">
-        <Slider ref={sliderRef} {...settings}>
+        <Slider {...settings}>
           {bloggers.map((item: IBlogger, index: number) => {
             return (
               <div className="slider__item" key={index}>

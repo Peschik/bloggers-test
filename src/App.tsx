@@ -5,7 +5,7 @@ import AppHeader from "./components/appHeader/AppHeader";
 import { BloggerSlider } from "./components/bloggerSlider/BloggerSlider";
 import PostList from "./components/postList/PostList";
 import axios from "axios";
-import { FC, useEffect, useState } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 import { IBlogger, IPost } from "./types/types";
 import { backgroundImage } from "./components";
 import Spinner from "./components/spinner/Spinner";
@@ -55,8 +55,11 @@ const App: FC = () => {
     .filter((item) => item.userId === indexActiveSlide + 1)
     .filter((item, index) => index < 3);
 
-  const errorMessage = error ? <ErrorMessage /> : "";
-  const spinner = loading ? <Spinner /> : "";
+  const activeBlogger: IBlogger = bloggers[indexActiveSlide];
+
+  const errorMessage: ReactElement | null = error ? <ErrorMessage /> : null;
+  const spinner: ReactElement | null = loading ? <Spinner /> : null;
+
   return (
     <div className="container">
       <AppHeader />
@@ -74,7 +77,7 @@ const App: FC = () => {
         )}
       </ErrorBoundary>
       <ErrorBoundary>
-        <PostList posts={activePosts} blogger={bloggers[indexActiveSlide]} />
+        <PostList posts={activePosts} blogger={activeBlogger} />
       </ErrorBoundary>
       <img
         className="background__image"
