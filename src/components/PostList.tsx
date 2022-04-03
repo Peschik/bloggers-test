@@ -21,7 +21,7 @@ const PostList: FC<PostListProps> = ({ posts, blogger }) => {
     <>
       <Container>
         <Row className="posts__header">
-          <Col className="image-quote" md={2} lg={3}>
+          <Col className="image__quote" md={2} lg={3}>
             <img src={quote} alt="qoute" />
           </Col>
           <Col md={9} lg={9}>
@@ -33,7 +33,7 @@ const PostList: FC<PostListProps> = ({ posts, blogger }) => {
 
         <Row className="posts">
           <Col className="posts__content" lg={9}>
-            {elements}
+            <ul>{elements}</ul>
           </Col>
         </Row>
       </Container>

@@ -6,11 +6,11 @@
 
 body {
   font-family: "Montserrat";
-  margin-bottom: 125px;
 }
 .container {
   max-width: 1280px;
   margin: auto;
+  position: relative;
   h2 {
     margin-top: 64px;
     margin-bottom: 47px;
@@ -30,39 +30,23 @@ body {
     color: $main-color;
   }
 }
-.background {
-  margin: auto;
-  position: relative;
-  max-width: 1400px;
+.posts {
+  margin-bottom: 100px;
 }
 .background__image {
-  position: fixed;
-  right: 5%;
-  top: 15%;
+  position: absolute;
+  right: -50px;
+  top: 100px;
   z-index: -1;
-  &__lower {
-    position: fixed;
-    left: 0%;
-    bottom: -10%;
+  &.lower {
+    position: absolute;
+    left: -100px;
+    top: 850px;
     z-index: -1;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .background__image {
-    display: none;
-    &__lower {
-      display: none;
-    }
-  }
-}
 @media only screen and (max-width: 567px) {
-  .background__image {
-    display: none;
-    &__lower {
-      display: none;
-    }
-  }
   .container {
     max-width: 100%;
     h2 {
@@ -71,6 +55,20 @@ body {
     }
     p {
       font-size: 14px;
+    }
+  }
+}
+@media only screen and (max-width: 991px) {
+  .background__image {
+    display: none;
+  }
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+  .background__image {
+    max-width: 200px;
+    right: 50px;
+    &.lower {
+      left: 0;
     }
   }
 }

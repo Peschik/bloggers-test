@@ -37,44 +37,41 @@ const App: FC = () => {
     }
   }
 
-  const onActivateBlogger = (id: number) => {
+  const onActivateBlogger = (id: number): void => {
     setActiveId(id);
   };
 
-  const activePosts = posts
+  const activePosts: IPost[] = posts
     .filter((item) => item.userId === activeId + 1)
     .filter((item, index) => index < 3);
 
   return (
-    <div className="background">
-      <div className="container">
-        <img
-          className="background__image"
-          src={backgroundImage}
-          alt="background"
+    <div className="container">
+      <h2 className="heading">Наши топ-блогеры</h2>
+      <p className="specialists">
+        Лучше специалисты в своем деле, <br />
+        средний опыт работы в профессии - 27 лет
+      </p>
+      <ErrorBoundary>
+        <BloggerSlider
+          bloggers={bloggers}
+          activeId={activeId}
+          onActivateBlogger={onActivateBlogger}
         />
-        <img
-          className="background__image__lower"
-          src={backgroundImage}
-          alt="background"
-        />
-
-        <h2 className="heading">Наши топ-блогеры</h2>
-        <p className="specialists">
-          Лучше специалисты в своем деле, <br />
-          средний опыт работы в профессии - 27 лет
-        </p>
-        <ErrorBoundary>
-          <BloggerSlider
-            bloggers={bloggers}
-            activeId={activeId}
-            onActivateBlogger={onActivateBlogger}
-          />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <PostList posts={activePosts} blogger={bloggers[activeId]} />
-        </ErrorBoundary>
-      </div>
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <PostList posts={activePosts} blogger={bloggers[activeId]} />
+      </ErrorBoundary>
+      <img
+        className="background__image"
+        src={backgroundImage}
+        alt="background"
+      />
+      <img
+        className="background__image lower"
+        src={backgroundImage}
+        alt="background"
+      />
     </div>
   );
 };

@@ -31,11 +31,11 @@ export const BloggerSlider: FC<SliderProps> = ({
 
   function SampleNextArrow(props) {
     const { onClick } = props;
-    return <div className="slider__button__next" onClick={onClick} />;
+    return <div className="slider__button next" onClick={onClick} />;
   }
   function SamplePrevArrow(props) {
     const { onClick } = props;
-    return <div className="slider__button__prev" onClick={onClick} />;
+    return <div className="slider__button prev" onClick={onClick} />;
   }
 
   const settings = {

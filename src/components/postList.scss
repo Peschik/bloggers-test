@@ -25,23 +25,18 @@
     list-style: none;
   }
 }
-.image-quote {
+.image__quote {
   display: flex;
   justify-content: flex-end;
 }
 
-@media only screen and (max-width: 768px) {
-  .posts {
-    box-sizing: border-box;
-  }
-}
 @media only screen and (max-width: 567px) {
   .container h2 {
     margin: 0 auto;
     font-size: 24px;
     text-align: center;
   }
-  .image-quote {
+  .image__quote {
     display: flex;
     justify-content: flex-start;
     img {
