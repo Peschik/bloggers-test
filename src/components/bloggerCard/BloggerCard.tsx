@@ -7,13 +7,16 @@ interface BloggerCardProps {
   indexActiveSlide: number;
 }
 
+enum activeCard {
+  "blogger__card",
+  "blogger__card active",
+}
+
 const BloggerCard: FC<BloggerCardProps> = ({ blogger, indexActiveSlide }) => {
   return (
     <div
       className={
-        blogger.id === indexActiveSlide
-          ? "blogger__card active"
-          : "blogger__card"
+        blogger.id === indexActiveSlide ? activeCard[1] : activeCard[0]
       }
     >
       <img

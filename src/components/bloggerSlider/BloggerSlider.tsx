@@ -20,12 +20,13 @@ export const BloggerSlider: FC<SliderProps> = ({
     onActivateBlogger(slideIndex);
   }, [slideIndex]);
 
-  function SampleNextArrow(props) {
+  function SampleNextArrow(props: any) {
     const { onClick } = props;
     return <div className="slider__button next" onClick={onClick} />;
   }
-  function SamplePrevArrow(props) {
+  function SamplePrevArrow(props: any) {
     const { onClick } = props;
+
     return <div className="slider__button prev" onClick={onClick} />;
   }
 
