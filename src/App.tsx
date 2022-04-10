@@ -52,8 +52,8 @@ const App: FC = () => {
   };
 
   const activePosts: IPost[] = posts
-    .filter((item) => item.userId === indexActiveSlide + 1)
-    .filter((item, index) => index < 3);
+    .filter((item: IPost) => item.userId === indexActiveSlide + 1)
+    .filter((item: IPost, index: number) => index < 3);
 
   const activeBlogger: IBlogger = bloggers[indexActiveSlide];
 

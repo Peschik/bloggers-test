@@ -3,7 +3,6 @@ import { IBlogger } from "../../types/types";
 import Slider from "react-slick";
 import BloggerCard from "../bloggerCard/BloggerCard";
 import "./bloggerSlider.scss";
-
 interface SliderProps {
   bloggers: IBlogger[];
   indexActiveSlide: number;
